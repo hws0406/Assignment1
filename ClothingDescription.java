@@ -1,5 +1,7 @@
-
+import java.util.Scanner;	
 public class ClothingDescription {
+	
+	Scanner input = new Scanner(System.in);
 	
 	String clothingName, size;
 	int maxPeriod;
