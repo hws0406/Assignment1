@@ -3,7 +3,7 @@ import java.text.DecimalFormat;
 
 public class AdvertisementandMarketing {
 	
-	Scanner input = new Scanner(System.in);
+	Scanner in = new Scanner(System.in);
 	static DecimalFormat df2 = new DecimalFormat("#.##"); 
 	
 	String bestSelling;
@@ -17,24 +17,24 @@ public class AdvertisementandMarketing {
 		newArrival = nA;
 		
 		System.out.println("\nInput specific month:" + month);
-		month = input.nextLine();
+		month = in.nextLine();
 		
 		System.out.println("\nBest Selling of the Month:" + bSname);
-		bSname = input.nextInt();
+		bSname = in.nextInt();
 		
 		System.out.println("\nNew Arrival of the Month:" + nAname);
-		nAname = input.nextInt();
+		nAname = in.nextInt();
 		
 		System.out.println("\nTotal Clothing Rented:" + nClothing);
-		nClothing = input.nextInt();
+		nClothing = in.nextInt();
 	}	
 
 	public void rentalReport(){
-		System.out.print("\nRental report for month:" + month);
-		System.out.println("\n");
-		System.out.println("\nBest Selling of the Month:" + bSname);
-		System.out.println("\nNew Arrival of the Month:" + nAname);
-		System.out.println("\nTotal Clothing Rented:" + nClothing);
+		System.out.print("\nRental report for month:" + month +
+		                 "\n" +
+		                 "\nBest Selling of the Month:" + bSname +
+		                 "\nNew Arrival of the Month:" + nAname +
+		                 "\nTotal Clothing Rented:" + nClothing);
 	}
 	
 }
