@@ -1,7 +1,5 @@
-import java.util.Scanner;	
+
 public class ClothingRentalService {
-	
-	Scanner in = new Scanner(System.in);
 	
 	String name, address, contact, email;
 
