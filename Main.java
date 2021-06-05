@@ -6,30 +6,54 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		System.out.println("\nWelcome to HWS Clothing Rental");
+		System.out.println("\nWelcome to HWS Clothing Rental!");
 		System.out.println("-----------------------------------");
 		
 		ClothingRentalService crs = new ClothingRentalService("HWS Clothing Rental");
-		System.out.println(crs);
+		crs.printDescription();
 		
-		System.out.println("\n----------------------------------------");
-		System.out.println("\n");
+		System.out.println("\n\n----------------------------------------");
 		System.out.println("Login");
 		System.out.println("\n1 == Customer");
-		System.out.println("2  == Admin");
+		System.out.println("\n2 == Admin");
+		System.out.println("\n3 ==  Exit to Main Menu");
 		
-		System.out.println("\nEnter 1 or 2 to login");
+		System.out.println("\nEnter 1 or 2 to login, 3 to Exit");
+		System.out.print("Code: ");
 		String menuOption = in.nextLine();
 		System.out.print("\n------------------------------------------");
 		
 		switch(menuOption) {
 		case "1": 
-			System.out.println("\nHi Dear Customer. \nGlad to have this wonderful chance to serve you. Thanks for choosing us! ");
-			System.out.println("\nLets Start with choosing your prefer clothing");
-			Sales s = new Sales();
-			System.out.println(s);
-			s.receipt();
-	
+			System.out.println("\n\nHi Dear Customer, \nGlad to have this wonderful chance to serve you. Thanks for choosing us! ");
+			System.out.println("\nPlease log in:" + 
+			                   "\nPress 1 for returned customer" + 
+					           "\nPress 2 for new customer");
+			System.out.print("Code: ");
+			int cusOption = in.nextInt();
+			System.out.println("\n----------------------------------------");
+			
+			if(cusOption == 1) {
+				System.out.println("\nHi Customer! Welcome back.");
+				System.out.print("\nUsername: ");
+				String cusUsername = in.next();
+				System.out.print("Password: ");
+				String cusPassword = in.next();
+				
+				if((cusUsername.equals("Sherry")) && (cusPassword.equals("sherry@1314"))){
+					String cusName = "Sherry";
+					System.out.println("\nLogin Successfully. Welcome Back " + cusName + "!");
+					System.out.println("Lets Start with choosing your prefer clothing");
+					Sales s = new Sales();
+					System.out.println(s);
+					s.receipt();
+				}
+				
+				else {
+					System.out.println("Wrong Login Credential. Please try again!");
+					System.exit(0);
+					}
+			}
 		break;
 		
 		case "2": 
@@ -39,13 +63,13 @@ public class Main {
 			System.out.println("Password:" );
 			String password = in.next();
 			
-			if((username.equals("hws")) && (password.equals("hws@0406"))) {
+			if((username.equals("hws")) && (password.equals("hws@0406"))) { 
 				System.out.println("\nAdmin" + username + "Log In Successful!");
 				System.out.print("\n------------------------------------------");
 				
-				String loginName = "hws";
+				String admName = "hws";
                 String position = "Admin";
-				System.out.println("\nAdmin online: " + loginName + position);
+				System.out.println("\nAdmin online: " + admName + position);
 				
 				boolean admin = true;
 				while(admin) {
@@ -79,13 +103,18 @@ public class Main {
 					else {
 						System.out.println("\nIncorrect username and password. Please Try again.");
 						}
-					break;
 					}
 				}
 					
 				else {
 					System.out.println("Invalid input. Please enter again.");
+					System.exit(0);
 				}
+		break;
+		
+		case "3":
+			System.out.println("\nThanks for visiting. Return back to Main Menu now");
+			System.exit(0);
 		}
 	}
 }
