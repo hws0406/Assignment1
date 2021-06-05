@@ -1,8 +1,10 @@
 import java.util.Scanner;
+import java.text.DecimalFormat;
 
 public class Sales {
 	
-	Scanner in = new Scanner(System.in);
+	static Scanner in = new Scanner(System.in);
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
 	
 	String name;
 	String date;
@@ -15,60 +17,63 @@ public class Sales {
 	
 	
 	public Sales() {
-		System.out.println("\nEnter your name:" + name);
+		System.out.print("\nEnter your name: ");
 		name = in.nextLine();
 		
-		System.out.println("\nEnter date:" + date);
+		System.out.print("\nEnter date: ");
 		date = in.nextLine();
 		
-		System.out.println("\nKinds of clothing available: Dress, Jumpsuit, Jacket, Playsuit, Sets & Suits" + style);
+		System.out.print("\nKinds of clothing available: Dress, Jumpsuit, Jacket, Playsuit, Sets & Suits: ");
 		style = in.nextLine();
 		
-		System.out.print("\nEnter rental days:" + days);
+		System.out.print("\nEnter rental days: ");
 		days = in.nextInt();
 		
-		System.out.println("\nEnter quantities" + quantity);
+		System.out.print("\nEnter quantities: ");
 		quantity = in.nextInt();
+		
+		System.out.print("\nEnter price: ");
+		pricePerDay = in.nextDouble();
 		
 		if (quantity <= 10){
 			System.out.println("\nThe price per day is: "+ pricePerDay);
-			System.out.println("\nThe total price is:" + price + "for" + days);
+			System.out.println("\nThe total price is: " + df2.format(calculateTotalPrice()) + " for " + days + "days");
 			}
 			
 			else if (quantity >10) {
 				System.out.println("\nThe price per day is: "+ pricePerDay);
-				System.out.println("\nThe total price is:" + price + "for" + days);
+				System.out.println("\nThe total price is: " + df2.format(calculateTotalPrice()) + " for " + days + "days");
 				}
 		
 			else {
 				System.out.println("Invalid. Please reenter.");
 				}
 		
-		System.out.print("Enter payment: RM");
+		System.out.print("\nEnter payment: RM");
 		payment = in.nextDouble();
 		}
 	
-	public void calculateTotalPrice() {
-		price = pricePerDay * days;
+	public double calculateTotalPrice() {
+		return price = pricePerDay * quantity * days;
 		}
 	
-	public void calcBalance() {
-		balance = payment - price;
+	public double calcBalance() {
+		return balance = payment - price;
 		}
 	
 	public void receipt() {
-		System.out.println("\nReceipt" +
+		System.out.print( "\nReceipt" +
 				"\n-----------------------------------------------------" +
-				"\nName:" + name +
-				"\nDate:" + date +
-				"\nStyle:" + style +
-				"\nQuantity:" + quantity + 
-				"\nPrice /day:" + pricePerDay +
-				"\nTotal Days:" + days + "days" +
-				"\nTotal Price:" + price +
+				"\nName: " + name +
+				"\nDate: " + date +
+				"\nStyle: " + style +
+				"\nQuantity: " + quantity + 
+				"\nPrice /day: " + pricePerDay +
+				"\nTotal Days: " + days + "days" +
+				"\nTotal Price: RM" + price +
 				"\nTotal Payment: RM " + payment +
-				"\nBalance: RM " + balance +
+				"\nBalance: RM " + df2.format(calcBalance()) +
 				"\n------------------------------------------------------------" +
-		        "--------Thank You for Purchasing from us--------");				
+		        "\n--------Thank You for Purchasing from Us--------");				
 		}
 	}
